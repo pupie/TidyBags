@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.4.4 by LiquidAtoR
+ * Tidy Bags v3.7.0.0 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2105/10/06  v3.7.0.0
+ *				Added some stuff I came across on several forum posts and resorted the list numerically.
  *
  * 2014/11/30  v3.6.4.4
  *				Added fishing items as per request Proto (thanks for the code), code is added but for now deactivated (// in front of each item)
@@ -274,9 +277,9 @@ namespace PluginTidyBags3
 
     public class TidyBags3 : HBPlugin
     {
-        public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
+        public override string Name { get { return "Tidy Bags 3.7 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,4,4); } }
+        public override Version Version { get { return new Version(3,7,0,0); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -444,6 +447,34 @@ namespace PluginTidyBags3
             114655, // Scorched Satchel of Helpful Goods Item Level 84
             114662, // Tranquil Satchel of Helpful Goods Item Level 85
             114669, // Tranquil Satchel of Helpful Goods Item Level 88
+			118924, // Cache of Arms
+ 			118925, // Plundered Booty
+ 			118926, // Huge Pile of Skins
+ 			118927, // Maximillian's Laundry
+ 			118928, // Faintly-Sparkling Cache
+ 			118929, // Sack of Mined Ore
+ 			118930, // Bag of Everbloom Herbs
+ 			119036, // Box of Storied Treasures
+			119037, // Supply of Storied Rarities
+ 			119040, // Cache of Mingled Treasures
+ 			119041, // Strongbox of Mysterious Treasures
+ 			119042, // Crate of Valuable Treasures
+ 			119043, // Trove of Smoldering Treasures
+			123857, // Runic Pouch
+			124550, // Baneful Bracers
+			124551, // Baneful Tunic
+			124552, // Baneful Treads
+			124553, // Baneful Gauntlets
+			124554, // Baneful Hood
+			124555, // Baneful Leggings
+			124556, // Baneful Spaulders
+			124557, // Baneful Girdle
+			124558, // Baneful Ring
+			124559, // Baneful Choker
+			124560, // Baneful Cloak
+			124561, // Baneful Trinket
+			124562, // Baneful Armament
+			127799, // Baneful Pendant
 			139776, // Banner of the Mantid Empire (Archaeology)
 			139779, // Ancient Sap Feeder (Archaeology)
 			139780, // The Praying Mantid (Archaeology)
@@ -464,8 +495,8 @@ namespace PluginTidyBags3
             34053, // Small Dream Shard
             34056, // Lesser Cosmic Essence
             52718, // Lesser Celestial Essence
-            74252, // Small Ethereal Shard
-            52720  // Small Heavenly Shard
+            52720, // Small Heavenly Shard
+            74252  // Small Ethereal Shard
         };
 		
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
@@ -477,7 +508,7 @@ namespace PluginTidyBags3
 //			111672, // Enormous Sea Scorpion
 //			111676, // Enormous Jawless Skulker
 //			111670, // Enormous Blackwater Whiptail
-//			118566,  // Enormous Savage Piranha
+//			118566, // Enormous Savage Piranha
             33567 // Borean Leather Scraps
         };
 
@@ -588,19 +619,20 @@ namespace PluginTidyBags3
 //			111663, // Blackwater Whiptail
 //			118565, // Savage Piranha
  			112693, // Frostweed Seed
-			112694  // Fireweed Seed
+			112694, // Fireweed Seed
+            115504  //Fractured Temporal Crystal
         };
 		
         private HashSet<uint> _itemUseOnTwenty = new HashSet<uint>() {
-            111659, // Small Abyssal Gulper Eel
-            111589, // Small Crescent Saberfish
-            111651, // Small Fat Sleeper
-            111652, // Small Blind Lake Sturgeon
-            111656, // Small Fire Ammonite
-            111658, // Small Sea Scorpion
-            111650, // Small Jawless Skulker
-            111662, // Small Blackwater Whiptail
-            118564  // Small Savage Piranha
+//            111659, // Small Abyssal Gulper Eel
+//            111589, // Small Crescent Saberfish
+//            111651, // Small Fat Sleeper
+//            111652, // Small Blind Lake Sturgeon
+//            111656, // Small Fire Ammonite
+//            111658, // Small Sea Scorpion
+//            111650, // Small Jawless Skulker
+//            111662, // Small Blackwater Whiptail
+//            118564  // Small Savage Piranha
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
@@ -714,10 +746,10 @@ namespace PluginTidyBags3
                             if (item.StackCount >= 10) {
                                 this.useItem(item);
                             }
-//                        } else if (_itemUseOnTwenty.Contains(item.Entry)) { // stacks of 20
-//                            if (item.StackCount >= 20) {
-//                                this.useItem(item);
-//                            }
+                        } else if (_itemUseOnTwenty.Contains(item.Entry)) { // stacks of 20
+                            if (item.StackCount >= 20) {
+                                this.useItem(item);
+                            }
 						} else if (_destroyItems.Contains(item.Entry)) {
 								this.destroyItem(item);
 						}
